@@ -18,7 +18,7 @@ rule assemble:
         size="4.5m"
     run:
         if wildcards.assembly == 'flye':
-            shell("flye --nano-raw {input} --out-dir {params.dir} --genome-size {params.size} --threads 12")
+            shell("flye --nano-raw {input} --out-dir {params.dir} --genome-size {params.size} --threads 24")
         if wildcards.assembly == 'raven':
             shell("raven {input} -t 12 > {output}")
 
@@ -50,3 +50,11 @@ rule dnadiff:
         """
         dnadiff {params.reference} {input} -p {params.prefix}
         """
+
+rule plot_quals:
+    input:
+        "results/{sample}"
+    output:
+        "results/{strain}/beeswarm_quals.pdf"
+    shell:
+        "R --slave --no-restore --file=scripts/beeswarm_qual.R --args {input} {output}"

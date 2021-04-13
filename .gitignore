@@ -2,6 +2,7 @@
 data/
 results/
 .snakemake/
+.snakemake/locks
 # added by raven
 raven.cereal
 

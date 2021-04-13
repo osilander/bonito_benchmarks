@@ -1,6 +1,7 @@
 # local files
 data/
 results/
+.snakemake/
 # added by raven
 raven.cereal
 

@@ -6,7 +6,7 @@ POLISH = ['medaka', 'none']
 
 rule all:
     input:
-        expand("results/{sample}/{assembly}-{polish}.snps", sample=STRAINS, assembly=ASSEMBLY, polish=POLISH)
+        expand("results/{sample}-{assembly}-{polish}.snps", sample=STRAINS, assembly=ASSEMBLY, polish=POLISH)
 
 rule assemble:
     input:
@@ -42,9 +42,9 @@ rule dnadiff:
     input:
         assembly="results/{sample}/{assembly}-{polish}/consensus.fasta"
     output:
-        "results/{sample}/{assembly}-{polish}.snps"
+        "results/{sample}-{assembly}-{polish}.snps"
     params:
-        prefix="results/{sample}/{assembly}-{polish}",
+        prefix="results/{sample}-{assembly}-{polish}",
         reference="data/fixed_lab_MG1655_final2.fasta"
     shell:
         """

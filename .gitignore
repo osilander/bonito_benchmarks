@@ -1,6 +1,8 @@
 # local files
 data/
 results/
+# added by raven
+raven.cereal
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

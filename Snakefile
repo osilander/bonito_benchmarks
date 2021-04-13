@@ -1,90 +1,62 @@
-# find all samples in the illumina folder that match "bonito"
-STRAINS, = glob_wildcards("./data/{sample}_bonito.fasta")
+# find all fasta files that match "bonito"
+STRAINS, = glob_wildcards("data/{sample}_bonito.fasta")
+# assemble using a couple methods; first flye and raven
+ASSEMBLY = ["flye", "raven"]
+POLISH = ['medaka', 'none']
 
 rule all:
     input:
-        expand("results/{sample}/flye-raw-medaka/consensus.fasta", sample=STRAINS),
-        expand("results/{sample}/raven-medaka/consensus.fasta", sample=STRAINS),
-        expand("results/{sample}/flye-corr-medaka/consensus.fasta", sample=STRAINS)
+        expand("results/{sample}-{assembly}-{polish}.snps", sample=STRAINS, assembly=ASSEMBLY, polish=POLISH)
 
-rule flye_raw:
+rule assemble:
     input:
-        nanopore="data/{sample}_bonito.fasta"
+        "data/{sample}_bonito.fasta"
     output:
-        "results/{sample}/flye-raw/assembly.fasta"
+        "results/{sample}/{assembly}/assembly.fasta"
     params:
-        dir="results/{sample}/flye-raw",
+        dir="results/{sample}/{assembly}",
         size="4.5m"
-    shell:
-        """
-        flye --nano-raw {input.nanopore} --out-dir {params.dir} \
-        --genome-size {params.size} --threads 16
-        """
-rule raven:
-    input:
-        nanopore="data/{sample}_bonito.fasta"
-    output:
-        "results/{sample}/raven/assembly.fasta"
-    shell:
-        """
-        raven {input.nanopore} -t 16 > {output}
-        """
+    run:
+        if wildcards.assembly == 'flye':
+            """
+            flye --nano-raw {input} --out-dir {params.dir} \
+            --genome-size {params.size} --threads 16
+            """
+        if wildcards.assembly == 'raven':
+            """
+            raven {input} -t 16 > {output}
+            """
 
-rule flye_corr:
+rule polish:
     input:
-        nanopore="data/{sample}_bonito.fasta"
+        nanopore="data/2021-03-24_bonito.fasta",
+        assembly="results/{sample}/{assembly}/assembly.fasta"
     output:
-        "results/{sample}/flye-corr/assembly.fasta"
+        "results/{sample}/{assembly}-{polish}/consensus.fasta"
     params:
-        dir="results/{sample}/flye-corr",
-        size="4.5m"
-    shell:
-        """
-        flye --nano-corr {input.nanopore} --out-dir {params.dir} \
-        --genome-size {params.size} --threads 16
-        """
+        model="r941_min_high_g360",
+        outdir="results/{sample}/{assembly}-{polish}"
+    run:
+        if wildcards.polish == 'medaka':
+            """
+            medaka_consensus -m {params.model} -d {input.assembly} -i {input.nanopore} \
+            -o {params.outdir}
+            """
+        if wildcards.polish == 'none':
+            """
+            # just rename
+            mv {input.assembly} {output}
+            """
 
-rule medaka_flye_corr:
+rule dnadiff:
     input:
-        assembly="results/{sample}/flye-corr/assembly.fasta",
-        reads="data/{sample}_bonito.fasta"
+        assembly="results/{sample}/{assembly}-{polish}/consensus.fasta"
     output:
-        "results/{sample}/flye-corr-medaka/consensus.fasta"
+        "results/{sample}-{assembly}-{polish}.snps"
     params:
-        outdir="results/{sample}/flye-corr-medaka",
-        model="r941_min_high_g360"
+        prefix="results/{sample}/{assembly}-{polish}",
+        reference="data/fixed_lab_MG1655_final2.fasta"
     shell:
         """
-        medaka_consensus -m {params.model} -d {input.assembly} -i {input.reads} \
-        -o {params.outdir}
-        """
-
-rule medaka_flye_raw:
-    input:
-        assembly="results/{sample}/flye-raw/assembly.fasta",
-        reads="data/{sample}_bonito.fasta"
-    output:
-        "results/{sample}/flye-raw-medaka/consensus.fasta"
-    params:
-        outdir="results/{sample}/flye-raw-medaka",
-        model="r941_min_high_g360"
-    shell:
-        """
-        medaka_consensus -m {params.model} -d {input.assembly} -i {input.reads} \
-        -o {params.outdir}
-        """
-
-rule medaka_raven:
-    input:
-        assembly="results/{sample}/raven/assembly.fasta",
-        reads="data/{sample}_bonito.fasta"
-    output:
-        "results/{sample}/raven-medaka/consensus.fasta"
-    params:
-        outdir="results/{sample}/raven-medaka",
-        model="r941_min_high_g360"
-    shell:
-        """
-        medaka_consensus -m {params.model} -d {input.assembly} -i {input.reads} \
-        -o {params.outdir}
+        dnadiff {params.reference} {input} -p {params.prefix}
         """

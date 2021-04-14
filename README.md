@@ -1,4 +1,4 @@
-# bonito_benchmarks
+# Nanopore basecallers and assemblers
 ## Benchmarking basecallers and assemblers using *E. coli* K12
 
 This repo compares *E. coli* K12 assemblies (for now, `raven` and `flye`) 

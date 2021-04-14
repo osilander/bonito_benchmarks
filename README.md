@@ -70,13 +70,13 @@ This contrasts with the `bonito` assemblies, which are closer to
 60 errors - and with two 250Kbp windows containing more than 30 of those errors.
 
 Again, it is clear that the fast basecalled assemblies end up far below all others, 
-with q-scores around 33 (120 errors per 250Kbp). 
+with q-scores around 34 (100 errors per 250Kbp). 
 
 ![beeswarm_K12](figures/quals_beeswarm_medaka_250Kbp.png)
 
 Here, given the small number of errors in some assemblies, it is 
 not useful to plot 100Kbp windows, as *many many* of these windows 
-have no errors and a perfect q-score of 50. Instead, ther results 
+have no errors and a perfect q-score of 50. Instead, the results 
 using 400 Kbp windows are shown below. Here, max q-score is 56, and 
 there are no windows without errors, although in the `raven` assembly, 
 there is one window with 3 errors (q-score 51.2) and one with 4 (q-score 50).

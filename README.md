@@ -14,9 +14,10 @@ and the quality of the assembly is assessed by
 error per window across the genome. This is plotted as a phred-based q-score (e.g. q50 means 1 error every 100,000 base pairs).
 
 ### No polishing
-First, the results with no polishing at all ("none"). Each point indicates the quality score within a 250 Kbp window. `bonito 0.3.5` is indicated as *b0.3*; `guppy 4.5.2` is indicated as *g4.0*. There are two 
+First, the results with no polishing at all ("none"). Each point in the plot 
+below indicates the quality score within a 250 Kbp window. `bonito 0.3.5` is indicated as *b0.3*; `guppy 4.5.2` is indicated as *g4.0*. There are two 
 models for guppy, *fast* (fast) amd *high accuracy* (hac). In addition, for each set of `guppy` basecalls with `.fastq` scores, there is a matching dataset
-that has been filtered for high quality reads using `filtlong` as indicated above.
+that has been filtered for high quality (hq) reads using `filtlong` as indicated above.
 
 In a 250 Kbp windown, the maximum q-score is 54 ( log10(2.5e5)\*10 ). The `flye` assembly basecalled with `bonito` is 
 the clear winner. However, during `flye` assembly there is a polishing step built-in.
@@ -43,6 +44,8 @@ unfiltered and `filtlong` filtered
 means that on average, for a 5Mbp genome, there are close to 150 errors (with the vast majority being indels). 
 This contrasts with the `bonito` assemblies, which are closer to 60 errors - and with two 250Kbp windows containing more than 30 of those errors.
 
-Second, using 400 Kbp windows. Here, max q-score is 56, and there are no windows without errors.
+![beeswarm_K12](figures/quals_beeswarm_medaka_100Kbp.png)
 
-![beeswarm_K12](figures/quals_beeswarm_400Kbp.png)
+Here, given the small number of errors in some assemblies, it is not useful to plot 100Kbp windows, as *many many* opf these windows have no errors and a perfect q-score of 50. Instead, ther results using 400 Kbp windows is shown below. Here, max q-score is 56, and there are no windows without errors.
+
+![beeswarm_K12](figures/quals_beeswarm_medaka_400Kbp.png)

@@ -26,9 +26,9 @@ each set of `guppy` basecalls with `.fastq` scores, there is a matching dataset
 that has been filtered for high quality (hq) reads using `filtlong` as indicated above.
 
 In a 250 Kbp windown, the maximum q-score is 54 ( log10(2.5e5)\*10 ). For some additional 
-intution on scores:
+intution on scores for the 250Kbp-windowed plot below:
 
-| q-score | Errors per 250Kbp |
+| q-score | errors per 250Kbp |
 |:--------|:------------------|
 | 51      | 2                 |
 | 47      | 5                 |
@@ -45,7 +45,7 @@ are considerably higher, and the *hac* reads filtered for quality by `filtlong` 
 
 ![beeswarm_K12](figures/quals_beeswarm_none_250Kbp.png)
 
-Given the relatively large number of errors for these unpolished genomes, it's also possibel to plot
+Given the relatively large number of errors for these unpolished genomes, it's also possible to plot
 q-scores over 100Kbp pair windows, shown below. This yields slightly more information on the relative 
 quality of different assemblies as there are more points for each.
 

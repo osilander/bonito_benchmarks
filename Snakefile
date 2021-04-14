@@ -1,5 +1,5 @@
 # find all fasta files that match fasta from a specific date
-STRAINS, = glob_wildcards("data/{sample}_20210324.fasta")
+STRAINS, = glob_wildcards("data/{sample}_20210324.fastq")
 # assemble using a couple methods; first flye and raven
 ASSEMBLY = ["flye", "raven"]
 POLISH = ['medaka', 'none']
@@ -10,7 +10,7 @@ rule all:
 
 rule assemble:
     input:
-        "data/{sample}_20210324.fasta"
+        "data/{sample}_20210324.fastq"
     output:
         "results/{sample}/{assembly}/assembly.fasta"
     params:
@@ -24,7 +24,7 @@ rule assemble:
 
 rule polish:
     input:
-        nanopore="data/{sample}_20210324.fasta",
+        nanopore="data/{sample}_20210324.fastq",
         assembly="results/{sample}/{assembly}/assembly.fasta"
     output:
         "results/{sample}/{assembly}-{polish}/consensus.fasta"

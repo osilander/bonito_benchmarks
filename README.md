@@ -53,13 +53,13 @@ quality of different assemblies as there are more points for each.
 
 ### With polishing
 With `medaka` polishing, the `flye` and `raven` `bonito` assemblies come 
-out *very very* close, at around q49 (1.2 errors every 100Kbp). Notably, there are three 250Kbp windows in 
+out *very very* close, at around q49 (3 errors every 250Kbp). Notably, there are three 250Kbp windows in 
 the `raven` assembly that have *no errors at all*. This suggests that with 
 `bonito`, ONT may be closing in on the q60 *E. coli* genome (i.e. 
 less than one error per Mbp), which is one of the harder microbes to accurately assemble. 
 
 Also interesting is that the `guppy` basecalled assemblies do not 
-come far behind the `bonito` assemblies, around 46 (2.5 errors every 100Kbp),
+come far behind the `bonito` assemblies, around 46 (6 errors every 250Kbp),
 and perhaps slightly higher for the `filtlong`-filtered data (compare, 
 especially, the `flye` assemblies polished with `medaka` for the 
 unfiltered and `filtlong` filtered 
@@ -69,7 +69,8 @@ errors (with the vast majority being indels).
 This contrasts with the `bonito` assemblies, which are closer to 
 60 errors - and with two 250Kbp windows containing more than 30 of those errors.
 
-Again, it is clear that the fast basecalled assemblies end up far below all others.
+Again, it is clear that the fast basecalled assemblies end up far below all others, 
+with q-scores around 33 (120 errors per 250Kbp). 
 
 ![beeswarm_K12](figures/quals_beeswarm_medaka_250Kbp.png)
 

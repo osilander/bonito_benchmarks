@@ -3,6 +3,7 @@ data/
 results/
 .snakemake/
 .snakemake/locks
+*R.swp
 # added by raven
 raven.cereal
 

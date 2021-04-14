@@ -12,8 +12,8 @@ First, using 250 Kbp windows. Max q-score here is 54. As is apparent for both th
 
 Also interesting is that the `guppy` basecalls do not come far behind `bonito`, around 45.5 (2.8 errors every 100Kbp). However, this means that on average, for a 5Mbp genome, there are close to 150 errors (with the vast majority being indels). 
 
-![beeswarm_K12](figures/quals_beeswarm_250.png)
+![beeswarm_K12](figures/quals_beeswarm_250Kbp.png)
 
 Second, using 400 Kbp windows. Here, max q-score is 56, and there are no windows without errors.
 
-![beeswarm_K12](figures/quals_beeswarm_400.png)
+![beeswarm_K12](figures/quals_beeswarm_400Kbp.png)

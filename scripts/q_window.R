@@ -1,4 +1,5 @@
 # this script desperately needs some cleaning
+# R --slave --no-restore --file=q_window.R
 
 library(beeswarm)
 library(tidyr)
@@ -10,9 +11,10 @@ steps.lit <- c("100Kbp", "250Kbp", "400Kbp")
 
 files <- dir("./results", pattern=".snps")
 names <- gsub(".snps","",files)
-names <- gsub("out_","",names)
 names <- gsub("-","\n",names)
 names <- gsub("K12_","",names)
+names <- gsub("guppy_4.0","g4.0",names)
+names <- gsub("bonito_0.3","b0.3",names)
 cat(files, "\n")
 
 for (s in 1:length(steps)) {

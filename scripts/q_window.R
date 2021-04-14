@@ -16,7 +16,7 @@ names <- gsub("K12_","",names)
 names <- gsub("guppy_4.0","g4.0",names)
 names <- gsub("bonito_0.3","b0.3",names)
 cat(files, "\n")
-
+cat(names,"\n")
 for (s in 1:length(steps)) {
 	wins <- seq(1,4.8e6,by=steps[s])
 	quals <- matrix(nrow=5e6/steps[s]-2,ncol=length(files))

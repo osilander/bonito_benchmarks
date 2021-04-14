@@ -13,7 +13,7 @@ The results of each assembly is compared to the K12 reference using `dnadiff` fr
 and the quality of the assembly is assessed by
 error per window across the genome. This is plotted as a phred-based q-score (e.g. q50 means 1 error every 100,000 base pairs).
 
-First, a plot using 250 Kbp windows. `bonito 0.3.5` is indicated as *b0.3*; `guppy 4.5.2` is indicated as *g4.0*. There are two 
+First, a plot using no polishing at all ("none"). Each point indicates the number of errors within a 250 Kbp window. `bonito 0.3.5` is indicated as *b0.3*; `guppy 4.5.2` is indicated as *g4.0*. There are two 
 models for guppy, *high accuracy* (hac) and *fast* (fast). In addition, for each set of basecalls with `.fastq` scores, there is a matching dataset
 that has been filtered using `filtlong` as indicated above.
 
@@ -29,7 +29,7 @@ unfiltered and `filtlong` filtered
 means that on average, for a 5Mbp genome, there are close to 150 errors (with the vast majority being indels). 
 This contrasts with the `bonito` assemblies, which are closer to 60 errors - and with two 250Kbp windows containing more than 30 of those errors.
 
-![beeswarm_K12](figures/quals_beeswarm_250Kbp.png)
+![beeswarm_K12](figures/quals_beeswarm_none_250Kbp.png)
 
 Second, using 400 Kbp windows. Here, max q-score is 56, and there are no windows without errors.
 

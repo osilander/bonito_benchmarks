@@ -1,15 +1,20 @@
 # this script desperately needs some cleaning
-# R --slave --no-restore --file=q_window.R
+# Rscript --slave --no-restore q_window.R none
 
 library(beeswarm)
 library(tidyr)
 library(here)
 
+args = commandArgs(trailingOnly=TRUE)
+plot.pattern <- paste(args[1],".snps",sep="") 
+
 setwd(here())
 steps <- c(1e5, 2.5e5, 4e5)
 steps.lit <- c("100Kbp", "250Kbp", "400Kbp")
 
-files <- dir("./results", pattern=".snps")
+
+files <- dir("./results", pattern=plot.pattern)
+medaka.files <- 
 names <- gsub(".snps","",files)
 names <- gsub("-","\n",names)
 names <- gsub("K12_","",names)
@@ -43,7 +48,7 @@ for (s in 1:length(steps)) {
 	quals.long <- gather(quals.df, key="Assembler",value="qscore")
 
 	ifelse(!dir.exists(file.path("./", "figures")), dir.create(file.path("./", "figures")), FALSE)
-	png.name <- paste("figures/quals_beeswarm_",steps.lit[s],".png",sep="")
+	png.name <- paste("figures/quals_beeswarm_",args[1],"_",steps.lit[s],".png",sep="")
 	png(file=png.name, width=100*length(files),height=480)
 	par(las=1)
 	par(mar=c(8,5,2,1))

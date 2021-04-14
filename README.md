@@ -44,7 +44,7 @@ unfiltered and `filtlong` filtered
 means that on average, for a 5Mbp genome, there are close to 150 errors (with the vast majority being indels). 
 This contrasts with the `bonito` assemblies, which are closer to 60 errors - and with two 250Kbp windows containing more than 30 of those errors.
 
-![beeswarm_K12](figures/quals_beeswarm_medaka_100Kbp.png)
+![beeswarm_K12](figures/quals_beeswarm_medaka_250Kbp.png)
 
 Here, given the small number of errors in some assemblies, it is not useful to plot 100Kbp windows, as *many many* opf these windows have no errors and a perfect q-score of 50. Instead, ther results using 400 Kbp windows is shown below. Here, max q-score is 56, and there are no windows without errors.
 

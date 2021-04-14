@@ -1,7 +1,9 @@
 # bonito_benchmarks
 ## Benchmarking basecallers and assemblers using *E. coli* K12
 
-This repo compares *E. coli* K12 assemblies (for now, `raven` and `flye`) using data from different basecallers (`guppy` and `bonito`). One set of `guppy` basecalls have been filtered (*hq*) using `filtlong` to retain the highest quality reads (quality weighting of 10 to retain at least 500Mbp)
+This repo compares *E. coli* K12 assemblies (for now, `raven` and `flye`) 
+using data from different basecallers (`guppy` and `bonito`). One set of `guppy` 
+basecalls have been filtered (*hq*) using `filtlong` to retain the highest quality reads (quality weighting of 10 to retain at least 500Mbp)
 
 Each assembly is polished using `medaka` (or not).
 

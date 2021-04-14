@@ -13,7 +13,8 @@ Each assembly is polished using `medaka` (or not).
 
 The results of each assembly is compared to the K12 reference using `dnadiff` from `mummer`, 
 and the quality of the assembly is assessed by
-error per window across the genome. This is plotted as a phred-based q-score 
+calculating the SNPs (i.e. short indels and subsitutions) per window across the genome. 
+This is plotted as a phred-based q-score 
 (e.g. q50 means 1 error every 100,000 base pairs).
 
 ### No polishing

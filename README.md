@@ -2,7 +2,7 @@
 ## Benchmarking basecallers and assemblers using *E. coli* K12
 
 This repo compares *E. coli* K12 assemblies (for now, `raven` and `flye`) 
-using data from different basecallers (`guppy` and `bonito`). One set of `guppy` 
+using data from different basecallers (`guppy 4.5.2` and `bonito 0.3.5`). One set of `guppy` 
 basecalls have been filtered (*hq*) using `filtlong` to retain the highest quality 
 reads (quality weighting of 10 to retain at least 500Mbp) using `filtlong --mean_q_weight 10 --target_bases 500000000 myreads.fastq > myreads_hq.fastq`.
 Note that `bonito` does not produce quality scores (although there may be ways around that such that read q-scores can be inferred).

@@ -25,7 +25,9 @@ models for guppy, *fast* (fast) amd *high accuracy* (hac). In addition, for
 each set of `guppy` basecalls with `.fastq` scores, there is a matching dataset
 that has been filtered for high quality (hq) reads using `filtlong` as indicated above.
 
-In a 250 Kbp windown, the maximum q-score is 54 ( log10(2.5e5)\*10 ). For some additional 
+In a 250 Kbp windown, the maximum q-score is 54 ( log10(2.5e5)\*10 ). (actually this 
+is the score for a window with one error. I don't know how to score a window with no errors)
+For some additional 
 intution on scores for the 250Kbp-windowed plot below:
 
 | q-score | errors per 250Kbp |

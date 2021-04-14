@@ -25,7 +25,19 @@ models for guppy, *fast* (fast) amd *high accuracy* (hac). In addition, for
 each set of `guppy` basecalls with `.fastq` scores, there is a matching dataset
 that has been filtered for high quality (hq) reads using `filtlong` as indicated above.
 
-In a 250 Kbp windown, the maximum q-score is 54 ( log10(2.5e5)\*10 ). 
+In a 250 Kbp windown, the maximum q-score is 54 ( log10(2.5e5)\*10 ). For some additional 
+intution on scores:
+
+| q-score | Errors per 250Kbp |
+|:--------|:------------------|
+| 51      | 2                 |
+| 47      | 5                 |
+| 44      | 10                |
+| 41      | 20                |
+| 37      | 50                |
+| 34      | 100               |
+| 27      | 500               |
+
 The `flye` assembly basecalled with `bonito` is 
 the clear winner. However, during `flye` assembly there is a polishing step built-in.
 All the assemblies using fast basecalling are relatively poor, with q-scores well below 30. The *hac* reads 
@@ -57,12 +69,15 @@ errors (with the vast majority being indels).
 This contrasts with the `bonito` assemblies, which are closer to 
 60 errors - and with two 250Kbp windows containing more than 30 of those errors.
 
+Again, it is clear that the fast basecalled assemblies end up far below all others.
+
 ![beeswarm_K12](figures/quals_beeswarm_medaka_250Kbp.png)
 
 Here, given the small number of errors in some assemblies, it is 
 not useful to plot 100Kbp windows, as *many many* of these windows 
 have no errors and a perfect q-score of 50. Instead, ther results 
-using 400 Kbp windows is shown below. Here, max q-score is 56, and 
-there are no windows without errors.
+using 400 Kbp windows are shown below. Here, max q-score is 56, and 
+there are no windows without errors, although in the `raven` assembly, 
+there is one window with 3 errors (q-score 51.2) and one with 4 (q-score 50).
 
 ![beeswarm_K12](figures/quals_beeswarm_medaka_400Kbp.png)

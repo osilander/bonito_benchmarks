@@ -45,13 +45,13 @@ the clear winner. However, during `flye` assembly there is a polishing step buil
 All the assemblies using fast basecalling are relatively poor, with q-scores well below 30. The *hac* reads 
 are considerably higher, and the *hac* reads filtered for quality by `filtlong` are a tad higher still.
 
-![beeswarm_K12](figures/quals_beeswarm_none_250Kbp.png)
+![beeswarm_K12](figures/quals_beeswarm_9.4_none_250Kbp.png)
 
 Given the relatively large number of errors for these unpolished genomes, it's also possible to plot
 q-scores over 100Kbp pair windows, shown below. This yields slightly more information on the relative 
 quality of different assemblies as there are more points for each.
 
-![beeswarm_K12](figures/quals_beeswarm_none_100Kbp.png)
+![beeswarm_K12](figures/quals_beeswarm_9.4_none_100Kbp.png)
 
 ### With polishing
 With `medaka` polishing, the `flye` and `raven` `bonito` assemblies come 
@@ -74,7 +74,7 @@ This contrasts with the `bonito` assemblies, which are closer to
 Again, it is clear that the fast basecalled assemblies end up far below all others, 
 with q-scores around 34 (100 errors per 250Kbp). 
 
-![beeswarm_K12](figures/quals_beeswarm_medaka_250Kbp.png)
+![beeswarm_K12](figures/quals_beeswarm_9.4_medaka_250Kbp.png)
 
 Here, given the small number of errors in some assemblies, it is 
 not useful to plot 100Kbp windows, as *many many* of these windows 
@@ -83,4 +83,4 @@ using 400 Kbp windows are shown below. Here, max q-score is 56, and
 there are no windows without errors, although in the `raven` assembly, 
 there is one window with 3 errors (q-score 51.2) and one with 4 (q-score 50).
 
-![beeswarm_K12](figures/quals_beeswarm_medaka_400Kbp.png)
+![beeswarm_K12](figures/quals_beeswarm_9.4_medaka_400Kbp.png)

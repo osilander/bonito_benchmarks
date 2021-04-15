@@ -6,7 +6,7 @@ library(tidyr)
 library(here)
 
 args = commandArgs(trailingOnly=TRUE)
-plot.pattern <- paste(args[1],".snps",sep="") 
+plot.pattern <- paste(args[1],".+",args[2],".snps",sep="") 
 
 setwd(here())
 steps <- c(1e5, 2.5e5, 4e5)
@@ -16,9 +16,8 @@ steps.lit <- c("100Kbp", "250Kbp", "400Kbp")
 files <- dir("./results", pattern=plot.pattern)
 names <- gsub(".snps","",files)
 names <- gsub("-","\n",names)
-names <- gsub("K12_","",names)
-names <- gsub("guppy_4.0","g4.5",names)
-names <- gsub("bonito_0.3","b0.3.5",names)
+names <- gsub(paste("K12_",args[1],"_"),"",names)
+names <- gsub("b0.3","b0.3.5",names)
 # print out just to check
 cat(names,"\n")
 for (s in 1:length(steps)) {
@@ -58,7 +57,7 @@ for (s in 1:length(steps)) {
 	ifelse(!dir.exists(file.path("./", "figures")), dir.create(file.path("./", "figures")), FALSE)
 	
 	# open a png
-	png.name <- paste("figures/quals_beeswarm_",args[1],"_",steps.lit[s],".png",sep="")
+	png.name <- paste("figures/quals_beeswarm_",args[1],"_",args[2],"_",steps.lit[s],".png",sep="")
 	png(file=png.name, width=100*length(files),height=480)
 	
 	# change some defaults

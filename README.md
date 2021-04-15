@@ -88,3 +88,5 @@ there is one window with 3 errors (q-score 51.2) and one with 4 (q-score 50).
 ![beeswarm_K12](figures/quals_beeswarm_10.3_none_250Kbp.png)
 
 ![beeswarm_K12](figures/quals_beeswarm_10.3_medaka_250Kbp.png)
+
+![beeswarm_K12](figures/quals_beeswarm_10.3_medaka_400Kbp.png)

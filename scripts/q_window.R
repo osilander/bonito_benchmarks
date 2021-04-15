@@ -16,7 +16,7 @@ steps.lit <- c("100Kbp", "250Kbp", "400Kbp")
 files <- dir("./results", pattern=plot.pattern)
 names <- gsub(".snps","",files)
 names <- gsub("-","\n",names)
-names <- gsub(paste("K12_",args[1],"_"),"",names)
+names <- gsub("K12_","",names)
 names <- gsub("b0.3","b0.3.5",names)
 # print out just to check
 cat(names,"\n")

@@ -1,5 +1,5 @@
 # find all fasta files that match fasta from a specific date
-STRAINS, = glob_wildcards("data/{sample}.fasta")
+STRAINS, = glob_wildcards("data/{sample}.fastq")
 # assemble using a couple methods; first flye and raven
 ASSEMBLY = ["flye", "raven"]
 POLISH = ['medaka', 'none']
@@ -10,7 +10,7 @@ rule all:
 
 rule assemble:
     input:
-        "data/{sample}.fasta"
+        "data/{sample}.fastq"
     output:
         "results/{sample}/{assembly}/assembly.fasta"
     params:
@@ -24,7 +24,7 @@ rule assemble:
 
 rule polish:
     input:
-        nanopore="data/{sample}.fasta",
+        nanopore="data/{sample}.fastq",
         assembly="results/{sample}/{assembly}/assembly.fasta"
     output:
         "results/{sample}/{assembly}-{polish}/consensus.fasta"
@@ -45,8 +45,8 @@ rule dnadiff:
         "results/{sample}-{assembly}-{polish}.snps"
     params:
         prefix="results/{sample}-{assembly}-{polish}",
-        reference="data/refs/MG1655_U00096.fa"
-        #reference="data/refs/fixed_lab_MG1655_final2.fa"
+        #reference="data/refs/MG1655_U00096.fa"
+        reference="data/refs/fixed_lab_MG1655_final2.fa"
     shell:
         """
         dnadiff {params.reference} {input} -p {params.prefix}

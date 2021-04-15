@@ -20,7 +20,7 @@ This is plotted as a phred-based q-score
 ### No polishing
 First, the results with no polishing at all ("none"). Each point in the plot 
 below indicates the quality score within a 250 Kbp window. `bonito 0.3.5` is 
-indicated as *b0.3*; `guppy 4.5.2` is indicated as *g4.0*. There are two 
+indicated as *b0.3.5*; `guppy 4.5.2` is indicated as *g4.5.2*. There are two 
 models for guppy, *fast* (fast) amd *high accuracy* (hac). In addition, for 
 each set of `guppy` basecalls with `.fastq` scores, there is a matching dataset
 that has been filtered for high quality (hq) reads using `filtlong` as indicated above.

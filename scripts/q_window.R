@@ -17,8 +17,8 @@ files <- dir("./results", pattern=plot.pattern)
 names <- gsub(".snps","",files)
 names <- gsub("-","\n",names)
 names <- gsub("K12_","",names)
-names <- gsub("guppy_4.0","g4.0",names)
-names <- gsub("bonito_0.3","b0.3",names)
+names <- gsub("guppy_4.0","g4.5.2",names)
+names <- gsub("bonito_0.3","b0.3.5",names)
 # print out just to check
 cat(names,"\n")
 for (s in 1:length(steps)) {

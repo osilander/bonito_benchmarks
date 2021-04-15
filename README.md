@@ -79,14 +79,14 @@ with q-scores around 34 (100 errors per 250Kbp).
 Here, given the small number of errors in some assemblies, it is 
 not useful to plot 100Kbp windows, as *many many* of these windows 
 have no errors and a perfect q-score of 50. Instead, the results 
-using 400 Kbp windows are shown below. Here, max q-score is 56, and 
+using 500 Kbp windows are shown below. Here, max q-score is 56, and 
 there are no windows without errors, although in the `raven` assembly, 
 there is one window with 3 errors (q-score 51.2) and one with 4 (q-score 50).
 
-![beeswarm_K12](figures/quals_beeswarm_9.4_medaka_400Kbp.png)
+![beeswarm_K12](figures/quals_beeswarm_9.4_medaka_500Kbp.png)
 
 ![beeswarm_K12](figures/quals_beeswarm_10.3_none_250Kbp.png)
 
 ![beeswarm_K12](figures/quals_beeswarm_10.3_medaka_250Kbp.png)
 
-![beeswarm_K12](figures/quals_beeswarm_10.3_medaka_400Kbp.png)
+![beeswarm_K12](figures/quals_beeswarm_10.3_medaka_500Kbp.png)

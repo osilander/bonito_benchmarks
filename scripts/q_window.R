@@ -9,8 +9,8 @@ args = commandArgs(trailingOnly=TRUE)
 plot.pattern <- paste(args[1],".+",args[2],".snps",sep="") 
 
 setwd(here())
-steps <- c(1e5, 2.5e5, 4e5)
-steps.lit <- c("100Kbp", "250Kbp", "400Kbp")
+steps <- c(1e5, 2.5e5, 5e5)
+steps.lit <- c("100Kbp", "250Kbp", "500Kbp")
 
 # a buncch of manipulations to simplify the filenames
 files <- dir("./results", pattern=plot.pattern)

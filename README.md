@@ -59,9 +59,9 @@ quality of different assemblies as there are more points for each.
 ![beeswarm_K12](figures/quals_beeswarm_9.4_none_100Kbp.png)
 
 ### With polishing
-With `medaka` polishing, the `flye` and `raven` `bonito` assemblies come 
+With `medaka` polishing, the `flye` and `raven` `bonito`-basecalled assemblies come 
 out *very very* close, at around q49 (3 errors every 250Kbp). Notably, there is one 250Kbp windows in 
-the `raven` assembly that has *no errors at all*, and two windows that have one error. 
+the `raven` assembly that has *no errors at all* (q55), and two windows that have one error (q54). 
 
 Also interesting is that the `guppy` basecalled assemblies do not 
 come far behind the `bonito` assemblies, around 46 (6 errors every 250Kbp),
@@ -83,8 +83,8 @@ Here, given the small number of errors in some assemblies, it is
 not useful to plot 100Kbp windows, as *many many* of these windows 
 have no errors and a perfect q-score of 50. Instead, the results 
 using 500 Kbp windows are shown below. Here, max q-score is 57, and 
-there are no windows without errors, although in the `raven` assembly, 
-there is one window with 4 errors (q-score 51).
+there are no windows without errors, although in the `flye` assembly, 
+there is one window with 2 errors (q54).
 
 ![beeswarm_K12](figures/quals_beeswarm_9.4_medaka_500Kbp.png)
 
@@ -94,10 +94,9 @@ there is one window with 4 errors (q-score 51).
 
 The 10.3 chemistry has been designed with the thought there will be fewer indels.
 Oxford Nanopore have clearly done a good job here - even *unpolished*
-`bonito` assemblies haved q-scores well above 40, and in the case of `flye`
-(which implements its own polishing), the q-scores are well above 45. This
-is *approximately equivalent* to the **9.4** `bonito`-basecalled, `medaka`-polished 
-`flye` assemblies.
+`bonito`-basecalled assemblies haved q-scores well above 40, and in the case of `flye`
+(which implements its own polishing), the q-scores are well above 45. This "unpolished"
+assembly is *approximately equivalent* to the **9.4** `flye` assembly with `medaka` polishing.
 
 ![beeswarm_K12](figures/quals_beeswarm_10.3_none_250Kbp.png)
 
@@ -105,12 +104,12 @@ is *approximately equivalent* to the **9.4** `bonito`-basecalled, `medaka`-polis
 
 But the assemblies that really begin to shine are the **10.3** 
 `medaka`-polished ones (both `bonito` *and* `guppy`, and for both `raven` and `flye`). 
-For `bonito` basecalls, the *six* (`raven`) and *four* (`flye`) 250Kbp windows have 
-no errors at all (q-score 55), and an additional four have only one error (q-score 54). 
-Having siad that, there is one window in each of these assemblies that very large 
+For `bonito` basecalls, *six* (`raven`) and *four* (`flye`) 250Kbp windows have 
+no errors at all (q55), and an additional four have only one error (q54). 
+Having said that, there is one window in each of these assemblies that has a very large 
 number of errors, in fact more than any one winodw of the `guppy`-based assemblies. 
 
-For 
+Notably, for 
 `guppy` *high accuracy* (hac) basecalls, a very large fraction of 250Kbp windows also have no or one errors.
 
 But the *fast* `guppy` basecalls still wallow a bit in the mud, with polishing only pushing 
@@ -119,7 +118,8 @@ their assembly qualities up a smidge.
 ![beeswarm_K12](figures/quals_beeswarm_10.3_medaka_250Kbp.png)
 
 Because these assemblies seem so darn accurate, we can also make a plot with 500Kbp windows.
-Although now there are no error-free windows, thre majority have one (57), two (54), or three (52) errors.
+Although now there are no error-free windows, the majority have one (q57), two (q54), or three (q52) 
+errors, especially in the case of `raven`.
 
 Finally, it looks like the `raven` assembly, basecalled wqith `bonito`, and polished with `medaka` 
 is the winning method, at least for this data and this organism. 

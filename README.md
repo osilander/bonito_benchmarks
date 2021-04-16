@@ -32,7 +32,7 @@ that has been filtered for high quality (hq) reads using `filtlong` as indicated
 In a 250 Kbp windown, the maximum q-score is 54 ( log10(2.5e5)\*10 ). (actually this 
 is the score for a window with one error. Below, for windows with no errors, I assign 
 a q-score of the (max + 1)).
-Thus, for a 250Kbp-windowed plot q-scores and associated errors would be:
+Thus, within 250Kbp-windows, q-scores and associated errors would be:
 
 | q-score | errors per 250Kbp |
 |:--------|:------------------|

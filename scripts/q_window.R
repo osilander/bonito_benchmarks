@@ -42,8 +42,12 @@ for (s in 1:length(steps)) {
 			
 			# it's not obvious how too caluclate this
 			# if there are no errors
-			q <- max(1,dim(snps)[1])
-			quals[i,f] <- -log10(q/steps[s])*10
+			# in the case of no errors, I just add one to the max score
+			if(dim(snps)[1] > 0) {
+				q <- max(1,dim(snps)[1])
+				quals[i,f] <- -log10(q/steps[s])*10
+			}
+			else { quals[i,f] <- -log10(1/steps[s])*10 + 1 }
 		}
 		med.quals[f] <- median(quals[,f])
 	}

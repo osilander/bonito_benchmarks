@@ -2,10 +2,12 @@
 ## Benchmarking basecallers and assemblers using *E. coli* K12
 
 This repo compares *E. coli* K12 assemblies (for now, `raven` and `flye`) 
-using data from different basecallers (`guppy 4.5.2` and `bonito 0.3.5`). One set of `guppy` 
+using data from different flowcells chemistries (9.4 and 10.3) and 
+basecallers (`guppy 4.5.2` and `bonito 0.3.5`). One set of 9.4 `guppy` 
 basecalls have been filtered (*hq*) using `filtlong` to retain the highest quality 
 reads (quality weighting of 30 to retain at least 500Mbp) using 
-`filtlong --mean_q_weight 30 --target_bases 500000000 myreads.fastq > myreads_hq.fastq`.
+`filtlong --mean_q_weight 30 --target_bases 500000000 myreads.fastq > myreads_hq.fastq`. 
+For the 10.3 chemistry, we did not have enough data to filter. 
 Note that `bonito` does not produce quality scores (although there may be 
 ways around this such that read q-scores can be inferred).
 
@@ -16,6 +18,8 @@ and the quality of the assembly is assessed by
 calculating the SNPs (i.e. short indels and subsitutions) per window across the genome. 
 This is plotted as a phred-based q-score 
 (e.g. q50 means 1 error every 100,000 base pairs).
+
+## 9.4 Flowcells
 
 ### No polishing
 First, the results with no polishing at all ("none"). Each point in the plot 

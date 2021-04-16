@@ -19,18 +19,10 @@ calculating the SNPs (i.e. short indels and subsitutions) per window across the 
 This is plotted as a phred-based q-score 
 (e.g. q50 means 1 error every 100,000 base pairs).
 
-## 9.4 Flowcells
-
-### No polishing
-First, the results with no polishing at all ("none"). Each point in the plot 
-below indicates the quality score within a 250 Kbp window. `bonito 0.3.5` is 
-indicated as *b0.3.5*; `guppy 4.5.2` is indicated as *g4.5*. There are two 
-models for guppy, *fast* (fast) amd *high accuracy* (hac). In addition, for 
-each set of `guppy` basecalls with `.fastq` scores, there is a matching dataset
-that has been filtered for high quality (hq) reads using `filtlong` as indicated above.
-
-In a 250 Kbp windown, the maximum q-score is 54 ( log10(2.5e5)\*10 ). (actually this 
-is the score for a window with one error. Below, for windows with no errors, I assign 
+### Notes on errors
+For most plots below, I plot errors in the assembly over 250Kbp windows (or 500Kbp).
+In a 250 Kbp windown, the maximum q-score is 54 ( log10(2.5e5)\*10 ). (actually this
+is the score for a window with one error. Below, for windows with no errors, I assign
 a q-score of the (max + 1)).
 Thus, within 250Kbp-windows, q-scores and associated errors would be:
 
@@ -45,6 +37,16 @@ Thus, within 250Kbp-windows, q-scores and associated errors would be:
 | 37      | 50                |
 | 34      | 100               |
 | 27      | 500               |
+
+## 9.4 Flowcells
+
+### No polishing
+First, the results with no polishing at all ("none"). Each point in the plot 
+below indicates the quality score within a 250 Kbp window. `bonito 0.3.5` is 
+indicated as *b0.3.5*; `guppy 4.5.2` is indicated as *g4.5*. There are two 
+models for guppy, *fast* (fast) amd *high accuracy* (hac). In addition, for 
+each set of `guppy` basecalls with `.fastq` scores, there is a matching dataset
+that has been filtered for high quality (hq) reads using `filtlong` as indicated above.
 
 The `flye` assembly basecalled with `bonito` is 
 the clear winner. However, during `flye` assembly there is a polishing step built-in.

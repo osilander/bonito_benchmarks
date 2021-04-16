@@ -23,6 +23,16 @@ calculating the SNPs (i.e. short indels and subsitutions) per window across the 
 This is plotted as a phred-based q-score 
 (e.g. q50 means 1 error every 100,000 base pairs).
 
+### Notes on data
+
+The 9.4 data was produced several years ago by our lab.
+
+The 10.3 data was kindly pointed out to me by [Mari Miyamoto](https://twitter.com/marimiya_tky) 
+and was collected
+by [Rasmus Kirkegaard](https://github.com/Kirk3gaard) in the 
+[Albertsen lab](https://albertsenlab.org), with an analysis in
+an accompanying blogpost [here](https://albertsenlab.org/we-ar10-3-pretty-close-now/)
+
 ### Notes on errors
 For most plots below, I plot errors in the assembly over 250Kbp windows (or 500Kbp).
 In a 250 Kbp window, the maximum q-score is 54 ( log10(2.5e5)\*10 ). (actually this
@@ -53,7 +63,8 @@ each set of `guppy` basecalls with `.fastq` scores, there is a matching dataset
 that has been filtered for high quality (hq) reads using `filtlong` as indicated above.
 
 The `flye` assembly basecalled with `bonito` is 
-the clear winner. However, during `flye` assembly there is a polishing step built-in.
+the clear winner. However, during `flye` assembly there is a polishing step built-in, so it's noit quite 
+a fair competition.
 All the assemblies using fast basecalling are relatively poor, with q-scores well below 30. The *hac* reads 
 are considerably higher, and the *hac* reads filtered for quality by `filtlong` are a tad higher still.
 
@@ -90,7 +101,7 @@ Here, given the small number of errors in some assemblies, it is
 not useful to plot 100Kbp windows, as *many many* of these windows 
 have no errors and a perfect q-score of 50. Instead, the results 
 using 500 Kbp windows are shown below. Here, max q-score is 57, and 
-there are no windows without errors, although in the `flye` assembly, 
+while there are no windows without errors, in the `flye` assembly 
 there is one window with 2 errors (q54).
 
 ![beeswarm_K12](figures/quals_beeswarm_9.4_medaka_500Kbp.png)
@@ -103,7 +114,7 @@ The 10.3 chemistry has been designed with the thought there will be fewer indels
 Oxford Nanopore have clearly done a good job here - even *unpolished*
 `bonito`-basecalled assemblies haved q-scores well above 40, and in the case of `flye`
 (which implements its own polishing), the q-scores are well above 45. This "unpolished"
-assembly is *approximately equivalent* to the **9.4** `flye` assembly with `medaka` polishing.
+assembly is *approximately equivalent* to the **9.4** `flye` assembly *with* `medaka` polishing.
 
 ![beeswarm_K12](figures/quals_beeswarm_10.3_none_250Kbp.png)
 
@@ -129,6 +140,12 @@ Although now there are no error-free windows, the majority have one (q57), two (
 errors, especially in the case of `raven`.
 
 Finally, it looks like the `raven` assembly, basecalled wqith `bonito`, and polished with `medaka` 
-is the winning method, at least for this data and this organism. 
+is the winning method, at least for this data and this organism.
+
+A last and important note here (if you have read this far) is that I am not positive that the 10.3
+data is from a clone that is identical to the MG1655 reference sequence from Genbank
+(looking at you *Rasmus*). For the 9.4
+data, I am comparing to a ground truth reference (our lab strains, which in fact differs from the 
+Genbank reference by about 7 SNPs).
 
 ![beeswarm_K12](figures/quals_beeswarm_10.3_medaka_500Kbp.png)

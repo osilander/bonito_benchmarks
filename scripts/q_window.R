@@ -20,26 +20,27 @@ names <- gsub("K12_","",names)
 names <- gsub("_b0.3","\nb0.3.5",names)
 names <- gsub("_g4.5","\ng4.5",names)
 # print out just to check
-cat(names,"\n")
+#cat(names,"\n")
 for (s in 1:length(steps)) {
-	wins <- seq(1,4.8e6,by=steps[s])
+	wins <- seq(1,4.6e6,by=steps[s])
 	
 	# we skip the last window as it is not full length
-	quals <- matrix(nrow=5e6/steps[s]-2,ncol=length(files))
+	quals <- matrix(nrow=5e6/steps[s]-1,ncol=length(files))
 	colnames(quals) <- names
 	med.quals <- vector()
 
 	# loop over all files
 	for(f in 1:length(files)) {
 		input <- files[f]
+		cat(names[f],"\n")
 		d <- read.table(file=paste("results/",input,sep=""))	
 		q.win <- vector()
 
 		# again we skip the last window b/c not obvious 
 		# how to caluclate quality
-		for (i in 1:(length(wins)-2)) {
+		for (i in 1:(length(wins)-1)) {
 			snps <- subset(d, d[,1] >= wins[i] & d[,1] < wins[i+1])
-			
+			cat(wins[i],"\t",dim(snps)[1],"\n")
 			# it's not obvious how too caluclate this
 			# if there are no errors
 			# in the case of no errors, I just add one to the max score

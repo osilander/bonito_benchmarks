@@ -1,19 +1,23 @@
 # Nanopore basecallers and assemblers
 ## Benchmarking basecallers and assemblers using *E. coli* K12
 
-This repo compares *E. coli* K12 assemblies (for now, `raven` and `flye`) 
+This repo compares *E. coli* K12 assemblies (for now, [raven](https://github.com/lbcb-sci/raven) 
+and [flye](https://github.com/fenderglass/Flye)) 
 using data from different flowcells chemistries (9.4 and 10.3) and 
-basecallers (`guppy 4.5.2` and `bonito 0.3.5`). One set of 9.4 `guppy` 
-basecalls have been filtered (*hq*) using `filtlong` to retain the highest quality 
+basecallers (`guppy 4.5.2` and `bonito 0.3.5` [here](https://github.com/nanoporetech/bonito)). 
+One set of 9.4 `guppy` 
+basecalls have been filtered (*hq*) using [filtlong](https://github.com/rrwick/Filtlong) 
+to retain the highest quality 
 reads (quality weighting of 30 to retain at least 500Mbp) using 
 `filtlong --mean_q_weight 30 --target_bases 500000000 myreads.fastq > myreads_hq.fastq`. 
 For the 10.3 chemistry, we did not have enough data to filter. 
 Note that `bonito` does not produce quality scores (although there may be 
 ways around this such that read q-scores can be inferred).
 
-Each assembly is polished using `medaka` (or not).
+Each assembly is polished using [medaka](https://github.com/nanoporetech/medaka) (or not).
 
-The results of each assembly is compared to the K12 reference using `dnadiff` from `mummer`, 
+The results of each assembly is compared to the K12 reference using `dnadiff` 
+from [mummer](https://github.com/garviz/MUMmer), 
 and the quality of the assembly is assessed by
 calculating the SNPs (i.e. short indels and subsitutions) per window across the genome. 
 This is plotted as a phred-based q-score 
@@ -21,7 +25,7 @@ This is plotted as a phred-based q-score
 
 ### Notes on errors
 For most plots below, I plot errors in the assembly over 250Kbp windows (or 500Kbp).
-In a 250 Kbp windown, the maximum q-score is 54 ( log10(2.5e5)\*10 ). (actually this
+In a 250 Kbp window, the maximum q-score is 54 ( log10(2.5e5)\*10 ). (actually this
 is the score for a window with one error. Below, for windows with no errors, I assign
 a q-score of the (max + 1)).
 Thus, within 250Kbp-windows, q-scores and associated errors would be:
@@ -41,7 +45,7 @@ Thus, within 250Kbp-windows, q-scores and associated errors would be:
 ## 9.4 Flowcells
 
 ### No polishing
-First, the results with no polishing at all ("none"). Each point in the plot 
+First, the results for 9.4 flowcells with no polishing at all ("none"). Each point in the plot 
 below indicates the quality score within a 250 Kbp window. `bonito 0.3.5` is 
 indicated as *b0.3.5*; `guppy 4.5.2` is indicated as *g4.5*. There are two 
 models for guppy, *fast* (fast) amd *high accuracy* (hac). In addition, for 

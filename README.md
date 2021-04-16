@@ -105,8 +105,10 @@ is *approximately equivalent* to the **9.4** `bonito`-basecalled, `medaka`-polis
 
 But the assemblies that really begin to shine are the **10.3** 
 `medaka`-polished ones (both `bonito` *and* `guppy`, and for both `raven` and `flye`). 
-For `bonito` basecalls, the *six* (`raven`) and *four* (`flye`) 250Kbp windows have no errors at all (q-score 55), and an
-additional four have only one error (q-score 54).
+For `bonito` basecalls, the *six* (`raven`) and *four* (`flye`) 250Kbp windows have 
+no errors at all (q-score 55), and an additional four have only one error (q-score 54). 
+Having siad that, there is one window in each of these assemblies that very large 
+number of errors, in fact more than any one winodw of the `guppy`-based assemblies. 
 
 For 
 `guppy` *high accuracy* (hac) basecalls, a very large fraction of 250Kbp windows also have no or one errors.
@@ -117,6 +119,9 @@ their assembly qualities up a smidge.
 ![beeswarm_K12](figures/quals_beeswarm_10.3_medaka_250Kbp.png)
 
 Because these assemblies seem so darn accurate, we can also make a plot with 500Kbp windows.
-Although now there is only one 500Kbp window with no errors
+Although now there are no error-free windows, thre majority have one (57), two (54), or three (52) errors.
+
+Finally, it looks like the `raven` assembly, basecalled wqith `bonito`, and polished with `medaka` 
+is the winning method, at least for this data and this organism. 
 
 ![beeswarm_K12](figures/quals_beeswarm_10.3_medaka_500Kbp.png)

@@ -1,5 +1,8 @@
+#wildcard_constraints:
+#    sample=".+10.+"
+
 # find all fasta files that match fasta from a specific date
-STRAINS, = glob_wildcards("data/{sample}.fastq")
+STRAINS, = glob_wildcards("data/{sample,.+10.+}.fastq")
 # assemble using a couple methods; first flye and raven
 ASSEMBLY = ["flye", "raven"]
 POLISH = ['medaka', 'none']
@@ -29,7 +32,8 @@ rule polish:
     output:
         "results/{sample}/{assembly}-{polish}/consensus.fasta"
     params:
-        model="r941_min_high_g360",
+        #model="r941_min_high_g360",
+        model="r103_min_high_g360",
         outdir="results/{sample}/{assembly}-{polish}"
     run:
         if wildcards.polish == 'medaka':

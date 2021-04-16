@@ -22,9 +22,11 @@ names <- gsub("_g4.5","\ng4.5",names)
 # print out just to check
 #cat(names,"\n")
 for (s in 1:length(steps)) {
+	
+	# make sure this limit is close to correct so that
+	# the last window is full length
 	wins <- seq(1,4.6e6,by=steps[s])
 	
-	# we skip the last window as it is not full length
 	quals <- matrix(nrow=5e6/steps[s]-1,ncol=length(files))
 	colnames(quals) <- names
 	med.quals <- vector()
@@ -36,8 +38,6 @@ for (s in 1:length(steps)) {
 		d <- read.table(file=paste("results/",input,sep=""))	
 		q.win <- vector()
 
-		# again we skip the last window b/c not obvious 
-		# how to caluclate quality
 		for (i in 1:(length(wins)-1)) {
 			snps <- subset(d, d[,1] >= wins[i] & d[,1] < wins[i+1])
 			cat(wins[i],"\t",dim(snps)[1],"\n")
